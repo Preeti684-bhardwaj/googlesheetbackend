@@ -10,10 +10,18 @@ app.use(cors())
 app.use(bodyParser.json());
 
 const spreadsheetId = process.env.spreadsheetId; // Replace with your spreadsheet ID
-const credentials = require('./credentials.json'); // Your credentials file
+// const credentials = require('./credentials.json'); // Your credentials file
 
 const auth = new google.auth.GoogleAuth({
-  credentials,
+  type : process.env.type,
+  project_id: process.env.project_id,
+  private_key_id: process.env.private_key_id,
+  private_key:  process.env.private_key,
+  auth_uri:  process.env.auth_uri,
+  token_uri:  process.env.token_uri,
+  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
+  client_x509_cert_url: process.env.client_x509_cert_url,
+  universe_domain:  process.env.universe_domain,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
