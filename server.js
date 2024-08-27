@@ -13,15 +13,17 @@ const spreadsheetId = process.env.spreadsheetId; // Replace with your spreadshee
 // const credentials = require('./credentials.json'); // Your credentials file
 
 const auth = new google.auth.GoogleAuth({
-  type : process.env.type,
-  project_id: process.env.project_id,
-  private_key_id: process.env.private_key_id,
-  private_key:  process.env.private_key,
-  auth_uri:  process.env.auth_uri,
-  token_uri:  process.env.token_uri,
-  auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
-  client_x509_cert_url: process.env.client_x509_cert_url,
-  universe_domain:  process.env.universe_domain,
+    credentials: {
+        type: process.env.TYPE,
+        project_id: process.env.PROJECT_ID,
+        private_key_id: process.env.PRIVATE_KEY_ID,
+        private_key: process.env.PRIVATE_KEY.replace(/\\n/g, '\n'), // Replace \\n with newlines
+        client_email: process.env.CLIENT_EMAIL,
+        auth_uri: process.env.AUTH_URI,
+        token_uri: process.env.TOKEN_URI,
+        auth_provider_x509_cert_url: process.env.AUTH_PROVIDER_X509_CERT_URL,
+        client_x509_cert_url: process.env.CLIENT_X509_CERT_URL,
+      },
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
