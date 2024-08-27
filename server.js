@@ -1,10 +1,12 @@
 const express = require('express');
 const { google } = require('googleapis');
 const bodyParser = require('body-parser');
+const cors = require("cors")
 require("dotenv").config({ path: "./.env" });
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(cors())
 app.use(bodyParser.json());
 
 const spreadsheetId = process.env.spreadsheetId; // Replace with your spreadsheet ID
