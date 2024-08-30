@@ -40,7 +40,6 @@ app.post('/submit-form', async (req, res) => {
         values: [[name, email, phone, message]],
       },
     });
-
     res.status(200).send('Data added to Google Sheets');
   } catch (error) {
     console.error(error);
